@@ -1,10 +1,8 @@
 
-
+import Headercomponents from "./components/header/Headercomponents";
 function App() {
   return (
-    <div >
-      <h2>Hello Admin panel</h2>
-    </div>
+   <Headercomponents/>
   );
 }
 
