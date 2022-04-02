@@ -1,8 +1,12 @@
 
 import Headercomponents from "./components/header/Headercomponents";
+import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
-   <Headercomponents/>
+    <BrowserRouter >
+    <Headercomponents/>
+    </BrowserRouter >
+   
   );
 }
 

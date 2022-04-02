@@ -18,6 +18,11 @@ import { blue } from "@material-ui/core/colors";
         backgroundColor:blue["A200"],
         color:'white'
     },
+
+    ///......................Wraper of Contanier ..............//
+    wraping:{
+      padding:theme.spacing(2,32,0,32)
+    }
     
   }));
 
