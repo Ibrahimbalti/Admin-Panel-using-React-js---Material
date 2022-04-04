@@ -7,7 +7,7 @@ import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { NavLink } from 'react-router-dom';
 import useStyles from '../sidebar/SidebarStyle';
-import className from 'classnames'
+import clsx from  'clsx';
 import { blue } from '@material-ui/core/colors';
 
 export default function SidenavData() {
@@ -48,7 +48,7 @@ return blue['A700']
   return (
    <List>
        {SideNavData.map((item,i)=>(
-        <ListItem key={i} component={NavLink} to={item.link} className={className(classes.navlinks)}>
+        <ListItem key={i} component={NavLink} to={item.link} className={clsx(classes.navlinks,classes.navlinks)}>
             <ListItemIcon >{item.icon}</ListItemIcon>
             <ListItemIcon>{item.label}</ListItemIcon>
         </ListItem>

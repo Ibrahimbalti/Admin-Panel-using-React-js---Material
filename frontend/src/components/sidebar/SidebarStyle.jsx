@@ -22,9 +22,10 @@ import { blue,blueGrey } from "@material-ui/core/colors";
     activeNavlinks:{
       color:blue["A700"]
     },
-    "& div ":{
-      color:blueGrey["A700"],
-    }
+    "&.active , &.active div":{
+      color:blue["A700"],
+      background:'red'
+    },
     
   }));
 

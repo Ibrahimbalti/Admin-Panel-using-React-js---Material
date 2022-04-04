@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Navbar from "./Navbar";
 import Sidebar from "../sidebar/Sidebar";
 import { Box } from "@material-ui/core";
@@ -12,10 +12,14 @@ import Links from "../Body/Links";
 export default function Headercomponents() {
 
   const classes=useStyles()
+  const [Mobileopen, Setmobileopen] = useState(false);
+  const handleDraweropen = () => {
+    Setmobileopen(!Mobileopen);
+  };
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      <Navbar   handleDraweropen={ handleDraweropen} />
+      <Sidebar  Mobileopen={Mobileopen}  handleDraweropen={ handleDraweropen} />
       <Box className={classes.wraping}>
       <Routes>
         <Route path="/" element={< Dashbord/>}/>

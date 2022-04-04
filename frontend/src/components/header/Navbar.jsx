@@ -10,7 +10,7 @@ import Message from "./navtabs/Message";
 import MenuIcon from '@material-ui/icons/Menu';
 
 
-export default function Navbar() {
+export default function Navbar({ handleDraweropen}) {
   const classes = useStyles();
 
   return (
@@ -27,7 +27,7 @@ export default function Navbar() {
           </Hidden>
 
           <Hidden mdUp>
-            <IconButton color="inherit" onClick={()=>console.log("Hello Menu ")} >
+            <IconButton color="inherit" onClick={handleDraweropen} >
             <MenuIcon />
             </IconButton>
             
