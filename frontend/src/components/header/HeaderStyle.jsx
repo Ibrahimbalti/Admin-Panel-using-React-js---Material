@@ -21,6 +21,8 @@ import { blue } from "@material-ui/core/colors";
 
     ///......................Wraper of Contanier ..............//
     wraping:{
+      height:'100vh',
+      backgroundColor:'#efefef',
       padding:theme.spacing(2,2,0,32),
       [theme.breakpoints.down("sm")]:{
         padding:theme.spacing(2,2)

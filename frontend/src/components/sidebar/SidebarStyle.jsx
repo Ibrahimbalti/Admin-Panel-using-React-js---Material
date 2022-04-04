@@ -3,7 +3,10 @@ import { blue,blueGrey } from "@material-ui/core/colors";
  const useStyles = makeStyles((theme) => ({
     drawerPaper:{
         width:'250px',
-        marginTop:'64px'
+        marginTop:'64px',
+        [theme.breakpoints.down("sm")]:{
+          marginTop:'0px'
+        }
     },
     navlinks:{
       color:blueGrey["A200"],
@@ -27,6 +30,10 @@ import { blue,blueGrey } from "@material-ui/core/colors";
       background:'red'
     },
     
+    navButton:{
+      width:'100%',
+      textTransform:'capitalize'
+    }
   }));
 
   export default useStyles

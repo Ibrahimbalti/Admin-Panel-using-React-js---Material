@@ -1,5 +1,5 @@
 import React from 'react'
-import { List,ListItem, ListItemIcon } from '@material-ui/core'
+import { Button, List,ListItem, ListItemIcon } from '@material-ui/core'
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import BookIcon from '@material-ui/icons/Book';
 import PostAddIcon from '@material-ui/icons/PostAdd';
@@ -10,12 +10,9 @@ import useStyles from '../sidebar/SidebarStyle';
 import clsx from  'clsx';
 import { blue } from '@material-ui/core/colors';
 
-export default function SidenavData() {
+export default function SidenavData({handleDrawerclose}) {
 const classes=useStyles()
 
-const getActive=()=>{
-return blue['A700']
-}
 
     const SideNavData=[
         {
@@ -48,10 +45,12 @@ return blue['A700']
   return (
    <List>
        {SideNavData.map((item,i)=>(
+           <Button size='small' className={classes.navButton} onClick={handleDrawerclose}>
         <ListItem key={i} component={NavLink} to={item.link} className={clsx(classes.navlinks,classes.navlinks)}>
             <ListItemIcon >{item.icon}</ListItemIcon>
             <ListItemIcon>{item.label}</ListItemIcon>
         </ListItem>
+        </Button>
        ))}
        
    </List>

@@ -16,10 +16,14 @@ export default function Headercomponents() {
   const handleDraweropen = () => {
     Setmobileopen(!Mobileopen);
   };
+
+  const handleDrawerclose = () => {
+    Setmobileopen(false);
+  };
   return (
     <>
       <Navbar   handleDraweropen={ handleDraweropen} />
-      <Sidebar  Mobileopen={Mobileopen}  handleDraweropen={ handleDraweropen} />
+      <Sidebar  Mobileopen={Mobileopen}  handleDraweropen={ handleDraweropen} handleDrawerclose={handleDrawerclose} />
       <Box className={classes.wraping}>
       <Routes>
         <Route path="/" element={< Dashbord/>}/>

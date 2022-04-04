@@ -5,7 +5,7 @@ import { Typography } from "@material-ui/core";
 import useStyles from "./SidebarStyle";
 import SidenavData from "./SidenavData";
 
-export default function Sidebar( {Mobileopen,handleDraweropen}) {
+export default function Sidebar( {Mobileopen,handleDraweropen,handleDrawerclose}) {
   
   const classes = useStyles();
   
@@ -26,7 +26,7 @@ export default function Sidebar( {Mobileopen,handleDraweropen}) {
             keepMounted: true, // Better open performance on mobile.
           }}
         >
-          <Typography variant="h6">< SidenavData/></Typography>
+          <Typography variant="h6">< SidenavData   handleDrawerclose={handleDrawerclose} /></Typography>
         </Drawer>
       </Hidden>
       <Hidden smDown implementation="css">
@@ -37,7 +37,7 @@ export default function Sidebar( {Mobileopen,handleDraweropen}) {
           variant="permanent"
           open
         >
-          <Typography variant="h6">< SidenavData/></Typography>
+          <Typography variant="h6">< SidenavData handleDrawerclose={handleDrawerclose}/></Typography>
         </Drawer>
       </Hidden>
     </nav>
