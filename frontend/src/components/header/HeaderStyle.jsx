@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
- const useStyles = makeStyles((theme) => ({
+ export const useStyles = makeStyles((theme) => ({
     toolbar:{
       display:'flex',
       flexFlow:'row wrap',
@@ -23,7 +23,7 @@ import { blue } from "@material-ui/core/colors";
     wraping:{
       height:'100vh',
       backgroundColor:'#efefef',
-      padding:theme.spacing(2,2,0,32),
+      padding:theme.spacing(2,2,0,34),
       [theme.breakpoints.down("sm")]:{
         padding:theme.spacing(2,2)
       }
