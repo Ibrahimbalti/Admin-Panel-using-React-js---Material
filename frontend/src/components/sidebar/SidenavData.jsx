@@ -45,8 +45,8 @@ const classes=useStyles()
   return (
    <List>
        {SideNavData.map((item,i)=>(
-           <Button size='small' className={classes.navButton} onClick={handleDrawerclose}>
-        <ListItem key={i} component={NavLink} to={item.link} className={clsx(classes.navlinks,classes.navlinks)}>
+           <Button size='small' className={classes.navButton} onClick={handleDrawerclose} key={i}>
+        <ListItem  component={NavLink} to={item.link} className={clsx(classes.navlinks,classes.navlinks)}>
             <ListItemIcon >{item.icon}</ListItemIcon>
             <ListItemIcon>{item.label}</ListItemIcon>
         </ListItem>
