@@ -7,33 +7,29 @@ import Profile from "./navtabs/Profile";
 import Notification from "./navtabs/Notification";
 import useStyles from "./HeaderStyle";
 import Message from "./navtabs/Message";
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from "@material-ui/icons/Menu";
 
-
-export default function Navbar({ handleDraweropen}) {
+export default function Navbar({ handleDraweropen }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" style={{ margin: "0", padding: "0" }}>
-        <Toolbar className={classes.toolbar}>
-          <Typography variant="h6">Admin Panel</Typography>
-          <Hidden smDown>
-          <Box style={{display:'flex'}}>
-          < Notification/>
-           <Message/>
-           <Profile />
+    <AppBar position="fixed">
+      <Toolbar className={classes.toolbar}>
+        <Typography variant="h6">Admin Panel</Typography>
+        <Hidden smDown>
+          <Box style={{ display: "flex" }}>
+            <Notification />
+            <Message />
+            <Profile />
           </Box>
-          </Hidden>
+        </Hidden>
 
-          <Hidden mdUp>
-            <IconButton color="inherit" onClick={handleDraweropen} >
+        <Hidden mdUp>
+          <IconButton color="inherit" onClick={handleDraweropen}>
             <MenuIcon />
-            </IconButton>
-            
-          </Hidden>
-        </Toolbar>
-      </AppBar>
-    </div>
+          </IconButton>
+        </Hidden>
+      </Toolbar>
+    </AppBar>
   );
 }

@@ -39,3 +39,37 @@ export const DisplayGraphCard = ({id,data,brColor,bgColor}) => {
 
   return myChart;
 };
+
+
+export const GeneralGraphComponent = ({id,type,dataset,xAxiselabel}) => {
+  const ctx = document.getElementById(id).getContext("2d");
+  const myChart = new Chart(ctx, {
+    type: type ? type : "line",
+    data : {
+      labels:xAxiselabel,
+      datasets: dataset
+    },
+    options: {
+      scales: {
+        // x: {
+        //   display:false,
+        //   title:{display:false}
+        // },
+
+        // y: {
+        //   display:false,
+        //   title:{display:false}
+        // },
+      },
+
+      plugins:{
+        legend:{position:'bottom'}
+      }
+    },
+
+    responsive:true,
+    maintainAspectRatio:false
+  });
+
+  return myChart;
+};

@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { RandvalueGenerator } from "../../../utill/FakeArrayDataGenerator";
 import { FakeArrayDataGenerator } from "../../../utill/FakeArrayDataGenerator";
+import axios from "axios";
 import {
   Box,
   Card,
@@ -15,6 +16,8 @@ import { useStyles } from "../BodyStyle";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import { DisplayGraphCard } from "../../common/GraphComponent";
+import { UserviewComponent } from "./UserviewComponent";
+import { GetPost } from "../../../utill/BloguserPost";
 export default function Dashbord() {
   const classes = useStyles();
 
@@ -89,6 +92,24 @@ export default function Dashbord() {
       );
     
   });
+
+  // Calling the post api
+  useEffect(()=>
+  {
+    GetPost({limit:2}).then((data)=>console.log("data :",data))
+
+})
+
+// const getPost=async()=>{
+//   try {
+//     const response= await axios.get('https://dummyapi.io/data/v1/post')
+//     console.log("data",response.data)
+//   } catch (error) {
+//     console.log("erro rorrr")
+//   }
+//     }
+
+
   return (
     <Box >
       <PageHeader label="Dashboard" pageTitle="Blog Overview" />
@@ -130,6 +151,7 @@ export default function Dashbord() {
           </Grid>
         ))}
       </Grid>
+      <UserviewComponent/>
     </Box>
   );
 }
