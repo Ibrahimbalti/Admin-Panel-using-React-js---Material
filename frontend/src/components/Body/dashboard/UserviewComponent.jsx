@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { Box, Card, CardContent, Grid, Typography } from "@material-ui/core";
 import { GeneralGraphComponent } from "../../common/GraphComponent";
 import { useStyles } from "../BodyStyle";
@@ -7,6 +7,7 @@ import { blue, red } from "@material-ui/core/colors";
 
 export const UserviewComponent = () => {
   const classes = useStyles();
+  const [fetch, setFetch] = useState(false);
   const GraphData = [
     {
       id: "userGraph",
@@ -49,7 +50,8 @@ export const UserviewComponent = () => {
     },
   ];
   useEffect(() => {
-    GraphData.map((item) =>
+    if(!fetch){
+      GraphData.map((item) =>
       GeneralGraphComponent({
         id: item.id,
         type: item.type,
@@ -57,7 +59,10 @@ export const UserviewComponent = () => {
         xAxiselabel: item.xAxiselabel,
       })
     );
-  });
+    setFetch(true)
+    }
+    
+  },[fetch]);
 
   return (
     <Box className={classes.section}>

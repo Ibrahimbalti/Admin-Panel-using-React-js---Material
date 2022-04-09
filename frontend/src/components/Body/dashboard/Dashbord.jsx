@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { RandvalueGenerator } from "../../../utill/FakeArrayDataGenerator";
 import { FakeArrayDataGenerator } from "../../../utill/FakeArrayDataGenerator";
-import axios from "axios";
+import ListComponent from "./ListComponent";
 import {
   Box,
   Card,
@@ -10,7 +10,14 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
-import { amber, blue, green, indigo, lightGreen ,red} from "@material-ui/core/colors";
+import {
+  amber,
+  blue,
+  green,
+  indigo,
+  lightGreen,
+  red,
+} from "@material-ui/core/colors";
 import { PageHeader } from "../../common/CommonCompnents";
 import { useStyles } from "../BodyStyle";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
@@ -20,6 +27,8 @@ import { UserviewComponent } from "./UserviewComponent";
 import { GetPost } from "../../../utill/BloguserPost";
 export default function Dashbord() {
   const classes = useStyles();
+  const [post, setPost] = useState([]);
+  const [fetch, setFetch] = useState(false);
 
   const DisplayData = [
     {
@@ -48,8 +57,7 @@ export default function Dashbord() {
     },
   ];
 
-  const GraphCardData = 
-  [
+  const GraphCardData = [
     {
       id: "Post",
       data: FakeArrayDataGenerator({ count: 9, digit: 100 }),
@@ -77,47 +85,49 @@ export default function Dashbord() {
   ];
 
   useEffect(() => {
-    
-      GraphCardData.map((item,i) =>
-       <Fragment key={i}>
-         {
-            DisplayGraphCard({
-              id: item.id,
-              data: item.data,
-              brColor: item.brColor,
-              bgColor: item.bgColor,
-            })
-         }
-       </Fragment>
-      );
-    
-  });
+    if (!fetch) {
+      GraphCardData.map((item) => 
+      
+        DisplayGraphCard({
+          id: item.id,
+          data: item.data,
+          brColor: item.brColor,
+          bgColor: item.bgColor,
+        })
+      )
+      setFetch(true);
+    }
+  }, [fetch]);
 
   // Calling the post api
-  useEffect(()=>
-  {
-    GetPost({limit:2}).then((data)=>console.log("data :",data))
+  useEffect(() => {
+    if(!fetch)
+    {
+      GetPost({ limit: 5 }).then(({ data: { data } }) => {
+        setPost(data);
+      });
+      setFetch(true)
+    }
+   
+  },[fetch]);
 
-})
-
-// const getPost=async()=>{
-//   try {
-//     const response= await axios.get('https://dummyapi.io/data/v1/post')
-//     console.log("data",response.data)
-//   } catch (error) {
-//     console.log("erro rorrr")
-//   }
-//     }
-
+  // const getPost=async()=>{
+  //   try {
+  //     const response= await axios.get('https://dummyapi.io/data/v1/post')
+  //     console.log("data",response.data)
+  //   } catch (error) {
+  //     console.log("erro rorrr")
+  //   }
+  //     }
 
   return (
-    <Box >
+    <Box>
       <PageHeader label="Dashboard" pageTitle="Blog Overview" />
-      <Grid container spacing={1} >
+      <Grid container spacing={1}>
         {DisplayData.map((item, i) => (
           <Grid item xs={6} sm={3} key={i}>
-            <Card style={{marginTop:'20px'}}>
-              <CardContent className={classes.cardContent} >
+            <Card style={{ marginTop: "20px" }}>
+              <CardContent className={classes.cardContent}>
                 <canvas
                   id={item.label}
                   className={classes.DisplayCardGraph}
@@ -141,7 +151,9 @@ export default function Dashbord() {
                     className={classes.ratioBtn}
                     startIcon={item.icon}
                     size="small"
-                    style={{color:item.label[0]==="P" ? green[600]:red[500]}}
+                    style={{
+                      color: item.label[0] === "P" ? green[600] : red[500],
+                    }}
                   >
                     {item.iconLabel}
                   </Button>
@@ -151,7 +163,8 @@ export default function Dashbord() {
           </Grid>
         ))}
       </Grid>
-      <UserviewComponent/>
+      <UserviewComponent />
+      <ListComponent post={post}/>
     </Box>
   );
 }
