@@ -3,6 +3,6 @@ export const GetPost = ({ limit }) => {
     return https.get(`https://dummyapi.io/data/v1/post?limit=${limit}`)
 }
 
-// export const UserPost = () => {
-//     return https.get(`https://dummyapi.io/data/api/user?limit=${limit}`)
-// }
+export const GetUser = ({limit}) => {
+    return https.get(`https://dummyapi.io/data/v1/user?limit=${limit}`)
+}

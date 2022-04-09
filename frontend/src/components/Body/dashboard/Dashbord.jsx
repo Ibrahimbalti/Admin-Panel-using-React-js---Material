@@ -25,10 +25,12 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import { DisplayGraphCard } from "../../common/GraphComponent";
 import { UserviewComponent } from "./UserviewComponent";
 import { GetPost } from "../../../utill/BloguserPost";
+import { GetUser } from "../../../utill/BloguserPost";
 export default function Dashbord() {
   const classes = useStyles();
   const [post, setPost] = useState([]);
   const [fetch, setFetch] = useState(false);
+  const[author,setAuthor]=useState([])
 
   const DisplayData = [
     {
@@ -107,9 +109,14 @@ export default function Dashbord() {
         setPost(data);
       });
       setFetch(true)
+    
+      GetUser({ limit: 5 }).then(({ data: { data } }) => {
+        setAuthor(data);
+      });
+      setFetch(true)
     }
-   
-  },[fetch]);
+    
+  },[fetch,author]);
 
   // const getPost=async()=>{
   //   try {
@@ -164,7 +171,7 @@ export default function Dashbord() {
         ))}
       </Grid>
       <UserviewComponent />
-      <ListComponent post={post}/>
+      <ListComponent post={post} author={author}/>
     </Box>
   );
 }
