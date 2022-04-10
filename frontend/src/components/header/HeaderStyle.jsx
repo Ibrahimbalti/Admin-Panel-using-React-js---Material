@@ -23,7 +23,7 @@ import { blue } from "@material-ui/core/colors";
     wraping:{
       height:'100vh',
       backgroundColor:'#efefef',
-      padding:theme.spacing(2,2,0,34),
+      padding:theme.spacing(10,2,0,34),
       [theme.breakpoints.down("sm")]:{
         padding:theme.spacing(2,2)
       }

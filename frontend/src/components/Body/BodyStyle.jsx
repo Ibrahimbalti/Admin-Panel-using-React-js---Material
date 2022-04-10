@@ -64,10 +64,13 @@ export const useStyles = makeStyles((theme) => ({
 
   // Center progress bar
   CenterPrograssbar:{
-    minHeightL:"250px",
+    minHeight:"250px",
     display:'flex',
     flexFlow:"row wrap",
     justifyContent:'center',
-    alignItems:'center'
+    alignItems:'center',
+    width:'100%'
+    
+
   }
 }));

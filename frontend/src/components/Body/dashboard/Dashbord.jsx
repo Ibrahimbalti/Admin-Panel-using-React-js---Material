@@ -30,7 +30,7 @@ export default function Dashbord() {
   const classes = useStyles();
   const [post, setPost] = useState([]);
   const [fetch, setFetch] = useState(false);
-  const[author,setAuthor]=useState([])
+  const [author, setAuthor] = useState([]);
 
   const DisplayData = [
     {
@@ -88,35 +88,32 @@ export default function Dashbord() {
 
   useEffect(() => {
     if (!fetch) {
-      GraphCardData.map((item) => 
-      
+      GraphCardData.map((item) =>
         DisplayGraphCard({
           id: item.id,
           data: item.data,
           brColor: item.brColor,
           bgColor: item.bgColor,
         })
-      )
+      );
       setFetch(true);
     }
   }, [fetch]);
 
   // Calling the post api
   useEffect(() => {
-    if(!fetch)
-    {
+    if (!fetch) {
       GetPost({ limit: 5 }).then(({ data: { data } }) => {
         setPost(data);
       });
-      setFetch(true)
-    
+      setFetch(true);
+
       GetUser({ limit: 5 }).then(({ data: { data } }) => {
         setAuthor(data);
       });
-      setFetch(true)
+      setFetch(true);
     }
-    
-  },[fetch,author]);
+  }, [fetch, author]);
 
   // const getPost=async()=>{
   //   try {
@@ -171,7 +168,7 @@ export default function Dashbord() {
         ))}
       </Grid>
       <UserviewComponent />
-      <ListComponent post={post} author={author}/>
+      <ListComponent post={post} author={author} />
     </Box>
   );
 }
