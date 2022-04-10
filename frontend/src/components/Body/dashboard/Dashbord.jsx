@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RandvalueGenerator } from "../../../utill/FakeArrayDataGenerator";
 import { FakeArrayDataGenerator } from "../../../utill/FakeArrayDataGenerator";
 import ListComponent from "./ListComponent";
@@ -98,6 +98,7 @@ export default function Dashbord() {
       );
       setFetch(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetch]);
 
   // Calling the post api
@@ -113,19 +114,12 @@ export default function Dashbord() {
       });
       setFetch(true);
     }
-  }, [fetch, author]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetch]);
 
-  // const getPost=async()=>{
-  //   try {
-  //     const response= await axios.get('https://dummyapi.io/data/v1/post')
-  //     console.log("data",response.data)
-  //   } catch (error) {
-  //     console.log("erro rorrr")
-  //   }
-  //     }
 
   return (
-    <Box>
+    <Box  className={classes.section}>
       <PageHeader label="Dashboard" pageTitle="Blog Overview" />
       <Grid container spacing={1}>
         {DisplayData.map((item, i) => (
@@ -170,5 +164,6 @@ export default function Dashbord() {
       <UserviewComponent />
       <ListComponent post={post} author={author} />
     </Box>
+    
   );
 }

@@ -61,7 +61,8 @@ export const UserviewComponent = () => {
     );
     setFetch(true)
     }
-    
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[fetch]);
 
   return (

@@ -16,12 +16,12 @@ import { useStyles } from "../BodyStyle";
 export default function ListComponent({ post, author }) {
   const classes = useStyles();
   return (
-    <Box>
-      <Grid container spacing={1}>
+    <Box style={{backgroundColor:'#efefef'}} className={classes.section}>
+      <Grid container spacing={2} >
         {/* author */}
 
         <Grid item xs={12} sm={6} md={5}>
-          <Paper>
+          <Paper >
             <List>
               <ListItem>
                 {" "}

@@ -70,7 +70,15 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent:'center',
     alignItems:'center',
     width:'100%'
-    
+  },
+
+  Footer:{
+    backgroundColor:'#feffee',
+    padding:theme.spacing(1,1,1,33),
+    [theme.breakpoints.down("sm")]:{
+      padding:theme.spacing(1,1),
+      marginTop:"10px"
+    }
 
   }
 }));
